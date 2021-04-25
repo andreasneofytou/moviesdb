@@ -1,0 +1,7 @@
+{
+    "@@locale": "el",
+    "helloWorld": "Η καλύτερη ημέρα!",
+    "@helloWorld": {
+        "description": "The greeting shown to the Flutter Engage attendees"
+    }
+}
