@@ -1,7 +1,9 @@
 {
     "@@locale": "en",
-    "helloWorld": "Hello Flutter Engage!",
-    "@helloWorld": {
-        "description": "The greeting shown to the Flutter Engage attendees"
+    "homeTabText": "Home",
+    "discoverTabText": "Discover",
+    "appTitle": "The Movie Database",
+    "@appTitle": {
+        "description": ""
     }
 }
