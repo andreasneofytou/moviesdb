@@ -5,5 +5,8 @@
     "appTitle": "The Movie Database",
     "@appTitle": {
         "description": ""
-    }
+    },
+    "movies": "Movies",
+    "tvShows": "TV Shows",
+    "viewAll": "View All"
 }

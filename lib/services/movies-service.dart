@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:moviesdb/apis/movie-db-api.dart';
 import 'package:moviesdb/models/movie_list_result.dart';
+import 'package:moviesdb/models/tv_list_result.dart';
 
 class MoviesService {
   final String _locale = Platform.localeName;
@@ -14,5 +15,9 @@ class MoviesService {
 
   Future<List<MovieListResult>> getRandomMovies(int page) async {
     return await _movieDbApi.getRandomMovies(page, _locale, _region!);
+  }
+
+  Future<List<TvListResult>> getRandomTvShows(int page) async {
+    return await _movieDbApi.getRandomTvShows(page, _locale, _region!);
   }
 }

@@ -28,6 +28,9 @@ class Main extends StatelessWidget {
       localizationsDelegates:
           AppLocalizations.localizationsDelegates, // important
       supportedLocales: AppLocalizations.supportedLocales, // important
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
+
       home: MainPage(),
     );
   }

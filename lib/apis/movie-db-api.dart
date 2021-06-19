@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:moviesdb/models/movie_list_result.dart';
+import 'package:moviesdb/models/tv_list_result.dart';
 
 class MovieDbApi {
   static const String BASE_URL = 'https://api.themoviedb.org/3';
@@ -28,5 +29,25 @@ class MovieDbApi {
       return movies;
     }
     return <MovieListResult>[];
+  }
+
+  Future<List<TvListResult>> getRandomTvShows(
+      [int page = 1, String locale = 'en_US', String region = 'us']) async {
+    final url = Uri.parse(
+        '$BASE_URL/discover/tv?language=$locale&region=$region&sort_by=popularity.desc&include_adult=false&include_video=false&page=$page');
+    final response = await http
+        .get(url, headers: {HttpHeaders.authorizationHeader: 'Bearer $TOKEN'});
+
+    if (response.statusCode == 200 && response.body.isNotEmpty) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      List<TvListResult> tvShows =
+          ((json.decode(response.body))["results"] as List)
+              .map((data) => TvListResult.fromJson(data))
+              .toList();
+
+      return tvShows;
+    }
+    return <TvListResult>[];
   }
 }
