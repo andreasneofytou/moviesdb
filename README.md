@@ -38,3 +38,9 @@ storePassword=**123
 keyPassword=**3
 keyAlias=key
 storeFile=C:\\Users\\Varun\\Desktop\\***.jks
+
+# Generate icons according to our configuration
+
+https://apetools.webprofusion.com/#/tools/imagegorilla
+
+`flutter pub run flutter_launcher_icons:main`

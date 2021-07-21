@@ -11,16 +11,20 @@ TvListResult _$TvListResultFromJson(Map<String, dynamic> json) {
     json['id'] as int,
     (json['popularity'] as num).toDouble(),
     json['voteCount'] as int?,
-    json['poster_path'] as String,
-    json['backdrop_path'] as String,
-    json['original_language'] as String,
+    json['poster_path'] == null ? "" : json['poster_path'] as String,
+    json['backdrop_path'] == null ? "" : json['backdrop_path'] as String,
+    json['original_language'] == null
+        ? ""
+        : json['original_language'] as String,
     (json['origin_country'] as List<dynamic>).map((e) => e as String).toList(),
-    json['original_name'] as String,
+    json['original_name'] == null ? "" : json['original_name'] as String,
     (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
-    json['name'] as String,
+    json['name'] == null ? "" : json['name'] as String,
     (json['vote_average'] as num).toDouble(),
-    json['overview'] as String,
-    DateTime.parse(json['first_air_date'] as String),
+    json['overview'] == null ? "" : json['overview'] as String,
+    DateTime.parse(json['first_air_date'] == ""
+        ? "1970-01-01"
+        : json['first_air_date'] as String),
   );
 }
 

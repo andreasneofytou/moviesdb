@@ -12,16 +12,20 @@ MovieListResult _$MovieListResultFromJson(Map<String, dynamic> json) {
     (json['popularity'] as num).toDouble(),
     json['voteCount'] as int?,
     json['video'] as bool,
-    json['poster_path'] as String,
+    json['poster_path'] == null ? "" : json['poster_path'] as String,
     json['adult'] as bool,
-    json['backdrop_path'] as String,
-    json['original_language'] as String,
-    json['original_title'] as String,
+    json['backdrop_path'] == null ? "" : json['backdrop_path'] as String,
+    json['original_language'] == null
+        ? ""
+        : json['original_language'] as String,
+    json['original_title'] == null ? "" : json['original_title'] as String,
     (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
-    json['title'] as String,
+    json['title'] == null ? "" : json['title'] as String,
     (json['vote_average'] as num).toDouble(),
-    json['overview'] as String,
-    DateTime.parse(json['release_date'] as String),
+    json['overview'] == null ? "" : json['overview'] as String,
+    DateTime.parse(json['release_date'] == null
+        ? "1970-01-01"
+        : json['release_date'] as String),
   );
 }
 

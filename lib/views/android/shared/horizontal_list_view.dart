@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:moviesdb/apis/movie-db-api.dart';
 import 'package:moviesdb/models/ListMediaItem.dart';
 
-class HorizontalList extends StatelessWidget {
+class HorizontalListView extends StatelessWidget {
   final List<ListMediaItem> _contentList;
   final void Function(int) _callback;
-  const HorizontalList(this._contentList, this._callback, {Key? key})
+  const HorizontalListView(this._contentList, this._callback, {Key? key})
       : super(key: key);
 
   @override
@@ -27,9 +26,10 @@ class HorizontalList extends StatelessWidget {
                       onTap: () => _callback(item.id),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image.network(MovieDbApi.BASE_IMAGE_URL +
-                              "/w154" +
-                              item.imageUrl))));
+                          child: item.imageUrl != ""
+                              ? Image.network(item.imageUrl)
+                              : Image.asset(
+                                  "assets/images/No_Image_Available.jpg"))));
             }));
   }
 }

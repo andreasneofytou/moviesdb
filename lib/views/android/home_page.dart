@@ -6,7 +6,10 @@ import 'package:moviesdb/models/ListMediaItem.dart';
 import 'package:moviesdb/models/movie_list_result.dart';
 import 'package:moviesdb/models/tv_list_result.dart';
 import 'package:moviesdb/services/movies-service.dart';
-import 'package:moviesdb/views/shared/horizontal_list.dart';
+import 'package:moviesdb/views/android/movie_page.dart';
+import 'package:moviesdb/views/android/shared/horizontal_list_view.dart';
+
+import 'movies_page.dart';
 
 enum ViewAllType { MOVIES, TV_SHOWS }
 
@@ -18,10 +21,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   void onViewAllTap(ViewAllType type) {
     if (type == ViewAllType.MOVIES) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => MoviesPage()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MoviesPage()),
+      );
     } else {
       // Navigator.push(
       //   context,
@@ -111,10 +114,10 @@ class _MoviesHorizontalListState extends State<MoviesHorizontalList> {
   }
 
   void onMovieClick(int id) {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => MoviePage(id)),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MoviePage(id: id)),
+    );
   }
 
   @override
@@ -132,7 +135,7 @@ class _MoviesHorizontalListState extends State<MoviesHorizontalList> {
         child: Text("Something went wrong"),
       );
     } else {
-      return HorizontalList(
+      return HorizontalListView(
         movies
             .map((i) => ListMediaItem(
                 i.id, MovieDbApi.BASE_IMAGE_URL + "/w154" + i.posterUrl))
@@ -189,10 +192,13 @@ class _TvHorizontalListState extends State<TvHorizontalList> {
         child: Text("Something went wrong"),
       );
     } else {
-      return HorizontalList(
+      return HorizontalListView(
           shows
               .map((i) => ListMediaItem(
-                  i.id, MovieDbApi.BASE_IMAGE_URL + "/w154" + i.posterUrl))
+                  i.id,
+                  i.posterUrl == ""
+                      ? ""
+                      : (MovieDbApi.BASE_IMAGE_URL + "/w154" + i.posterUrl)))
               .toList(),
           onTvShowClick);
     }
