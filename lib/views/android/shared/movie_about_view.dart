@@ -34,7 +34,8 @@ class _MovieAboutViewState extends State<MovieAboutView> {
                         }),
                     child: Text(
                       expandedAbout ? "Less" : "Read more",
-                      style: TextStyle(color: Theme.of(context).accentColor),
+                      style:
+                          TextStyle(color: ColorScheme.fromSwatch().secondary),
                     ))),
             SizedBox(
               height: 10,

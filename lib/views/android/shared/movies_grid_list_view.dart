@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:injector/injector.dart';
 import 'package:moviesdb/apis/movie-db-api.dart';
 import 'package:moviesdb/models/movie_list_result.dart';
 import 'package:moviesdb/services/movies-service.dart';
@@ -15,14 +14,13 @@ class MoviesGridListView extends StatefulWidget {
 }
 
 class _MoviesGridListViewState extends State<MoviesGridListView> {
-  final injector = Injector.appInstance;
   late final MoviesService moviesService;
   ScrollController? controller;
   var movies = <MovieListResult>[];
   var page = 1;
 
   _MoviesGridListViewState() {
-    moviesService = injector.get<MoviesService>();
+    moviesService = MoviesService();
   }
 
   void scrollListener() async {

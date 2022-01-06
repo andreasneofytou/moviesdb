@@ -7,10 +7,11 @@ import 'package:moviesdb/models/tv_list_result.dart';
 
 class MoviesService {
   final String _locale = Platform.localeName;
-  final MovieDbApi _movieDbApi;
+  late MovieDbApi _movieDbApi;
   String? _region;
 
-  MoviesService(this._movieDbApi) {
+  MoviesService() {
+    _movieDbApi = MovieDbApi();
     _region = _locale.split('_').last;
   }
 

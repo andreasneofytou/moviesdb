@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:injector/injector.dart';
 import 'package:moviesdb/apis/movie-db-api.dart';
 import 'package:moviesdb/models/ListMediaItem.dart';
 import 'package:moviesdb/models/movie_list_result.dart';
@@ -94,13 +93,12 @@ class MoviesHorizontalList extends StatefulWidget {
 }
 
 class _MoviesHorizontalListState extends State<MoviesHorizontalList> {
-  final injector = Injector.appInstance;
   late final MoviesService moviesService;
   var movies = <MovieListResult>[];
   bool isLoading = false;
 
   _MoviesHorizontalListState() {
-    moviesService = injector.get<MoviesService>();
+    moviesService = MoviesService();
   }
 
   void getRandomMovies() async {
@@ -152,13 +150,12 @@ class TvHorizontalList extends StatefulWidget {
 }
 
 class _TvHorizontalListState extends State<TvHorizontalList> {
-  final injector = Injector.appInstance;
   late final MoviesService moviesService;
   var shows = <TvListResult>[];
   bool isLoading = false;
 
   _TvHorizontalListState() {
-    moviesService = injector.get<MoviesService>();
+    moviesService = MoviesService();
   }
 
   void getRandomTvShows() async {

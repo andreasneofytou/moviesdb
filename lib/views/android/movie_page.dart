@@ -1,8 +1,6 @@
 import 'dart:io';
-import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:injector/injector.dart';
 import 'package:intl/intl.dart';
 import 'package:moviesdb/apis/movie-db-api.dart';
 import 'package:moviesdb/models/movie_result.dart';
@@ -20,7 +18,6 @@ class MoviePage extends StatefulWidget {
 class _MoviePageState extends State<MoviePage>
     with SingleTickerProviderStateMixin {
   final String locale = Platform.localeName;
-  final injector = Injector.appInstance;
   late final MoviesService moviesService;
   late ScrollController scrollController;
   late TabController tabController;
@@ -36,7 +33,7 @@ class _MoviePageState extends State<MoviePage>
   };
 
   _MoviePageState() {
-    moviesService = injector.get<MoviesService>();
+    moviesService = MoviesService();
   }
 
   void getMovie() async {
