@@ -188,7 +188,7 @@ class _MoviePageState extends State<MoviePage>
             child: Column(
               children: <Widget>[
                 TabBar(
-                  labelColor: Theme.of(context).textTheme.headline1!.color,
+                  labelColor: Theme.of(context).textTheme.headlineLarge!.color,
                   isScrollable: true,
                   controller: tabController,
                   tabs: pages.keys.map((e) => Tab(text: e)).toList(),
